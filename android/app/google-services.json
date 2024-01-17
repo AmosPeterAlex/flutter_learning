@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "342843819105",
+    "project_id": "fir-flutter-ex-667d6",
+    "storage_bucket": "fir-flutter-ex-667d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342843819105:android:192f608e25959e231f9620",
+        "android_client_info": {
+          "package_name": "com.luminar.advanced_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh5jt-EJluy3aBIr4cw6jnLo4DJ7e9ozk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
