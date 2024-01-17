@@ -1,3 +1,4 @@
+import 'package:advanced_flutter/storage/firebase/email%20password%20authentification/firebase_functions.dart';
 import 'package:advanced_flutter/storage/firebase/email%20password%20authentification/login.dart';
 import 'package:flutter/material.dart';
 
@@ -16,8 +17,10 @@ class HomeFirebase extends StatelessWidget {
           children: [
             ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => LoginFirebase()));
+                  FirebaseHelper().logOut().then((value) => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LoginFirebase())));
                 },
                 child: Text('Logout'))
           ],

@@ -6,6 +6,7 @@ class RegistrationFirebase extends StatelessWidget {
   // const RegistrationFirebase({super.key});
   var emailController = TextEditingController();
   var passController = TextEditingController();
+
   // var cPassController = TextEditingController();
 
   @override
@@ -61,8 +62,9 @@ class RegistrationFirebase extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (context) => LoginFirebase()));
                     } else {
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(content: Text(value)));
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          backgroundColor: Colors.redAccent,
+                          content: Text(value)));
                     }
                   });
                 },
