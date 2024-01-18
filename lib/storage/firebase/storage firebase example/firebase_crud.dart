@@ -25,7 +25,7 @@ class _FirebaseCRUDExState extends State<FirebaseCRUDEx> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Firebase Cloud Storage Example'),
+        title: const Text('Firebase Cloud Storage Example'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -39,7 +39,7 @@ class _FirebaseCRUDExState extends State<FirebaseCRUDEx> {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10))),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextField(
@@ -53,8 +53,8 @@ class _FirebaseCRUDExState extends State<FirebaseCRUDEx> {
                 onPressed: () {
                   addUser();
                 },
-                child: Text('Add User')),
-            SizedBox(
+                child: const Text('Add User')),
+            const SizedBox(
               height: 10,
             ),
             StreamBuilder<QuerySnapshot>(
@@ -64,7 +64,7 @@ class _FirebaseCRUDExState extends State<FirebaseCRUDEx> {
                     return Text('Error ${snapshot.error}');
                   }
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return CircularProgressIndicator();
+                    return const CircularProgressIndicator();
                   }
                   final users = snapshot.data!.docs;
                   return Expanded(
@@ -84,12 +84,12 @@ class _FirebaseCRUDExState extends State<FirebaseCRUDEx> {
                                       onPressed: () {
                                         editData(userID);
                                       },
-                                      icon: Icon(Icons.edit)),
+                                      icon: const Icon(Icons.edit)),
                                   IconButton(
                                       onPressed: () {
                                         deleteData(userID);
                                       },
-                                      icon: Icon(Icons.delete))
+                                      icon: const Icon(Icons.delete))
                                 ],
                               ),
                             );
@@ -106,7 +106,7 @@ class _FirebaseCRUDExState extends State<FirebaseCRUDEx> {
     return _userCollection
         .add({'name': nameController.text, 'email': emailController.text}).then(
             (value) {
-      print("user added Succesfully");
+      print("user added Successfully");
       nameController.clear();
       emailController.clear();
     }).catchError((error) {
@@ -127,17 +127,17 @@ class _FirebaseCRUDExState extends State<FirebaseCRUDEx> {
           var nameEController = TextEditingController();
           var emailEController = TextEditingController();
           return AlertDialog(
-            title: Text('Update User'),
+            title: const Text('Update User'),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 TextField(
                     controller: nameEController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         hintText: "Enter Text", border: OutlineInputBorder())),
                 TextField(
                     controller: emailEController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         hintText: "Enter Text", border: OutlineInputBorder()))
               ],
             ),
@@ -147,7 +147,7 @@ class _FirebaseCRUDExState extends State<FirebaseCRUDEx> {
                     updateUser(id, nameEController.text, emailEController.text);
                     Navigator.pop(context);
                   },
-                  child: Text('Update'))
+                  child: const Text('Update'))
             ],
           );
         });
@@ -158,7 +158,7 @@ class _FirebaseCRUDExState extends State<FirebaseCRUDEx> {
     return _userCollection
         .doc(id)
         .update({'name': newName, 'email': newEmail}).then((value) {
-      print('User Updated Succesfully');
+      print('User Updated Successfully');
     }).catchError((error) {
       print('User Data Updation Failed');
     });
@@ -177,13 +177,13 @@ class _FirebaseCRUDExState extends State<FirebaseCRUDEx> {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-      options: FirebaseOptions(
+      options: const FirebaseOptions(
           apiKey: "AIzaSyBh5jt-EJluy3aBIr4cw6jnLo4DJ7e9ozk",
           appId: "fir-flutter-ex-667d6",
           messagingSenderId: '',
           projectId: "fir-flutter-ex-667d6",
           storageBucket: "fir-flutter-ex-667d6.appspot.com"));
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: FirebaseCRUDEx(),
     debugShowCheckedModeBanner: false,
   ));
