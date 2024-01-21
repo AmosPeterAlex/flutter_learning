@@ -5,7 +5,7 @@ class FirebaseHelper {
 
   get user => auth.currentUser;
 
-//user SignUp
+///user SignUp
   Future<String?> registerUser(
       {required String email, required String pass}) async {
     try {
@@ -13,22 +13,16 @@ class FirebaseHelper {
         email: email,
         password: pass,
       );
-      return null;
+      // return null;
     } on FirebaseAuthException catch (e) {
       return e.message;
-      // if (e.code == 'weak-password')
-      // {
-      //   print('The password provided is too weak.');
-      // } else if (e.code == 'email-already-in-use') {
-      //   print('The account already exists for that email.');
-      // }
     } catch (e) {
       print(e);
     }
     return null;
   }
 
-  //user Login
+  ///user Login
 
   Future<String?> loginUser(
       {required String email, required String pass}) async {
@@ -45,7 +39,7 @@ class FirebaseHelper {
     }
   }
 
-//signOut
+///signOut
 
 Future<void> logOut() async{
   await auth.signOut();
