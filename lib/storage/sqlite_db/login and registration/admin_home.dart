@@ -2,6 +2,8 @@ import 'package:advanced_flutter/storage/sqlite_db/login%20and%20registration/sq
 import 'package:flutter/material.dart';
 
 class AdminHome extends StatefulWidget {
+  const AdminHome({super.key});
+
   @override
   State<AdminHome> createState() => _AdminHomeState();
 }
@@ -42,7 +44,7 @@ class _AdminHomeState extends State<AdminHome> {
                       onPressed: () {
                         deleteDataByAdmin(users[index]['id']);
                       },
-                      icon: Icon(Icons.delete)),
+                      icon: const Icon(Icons.delete)),
                 ),
               );
             }));

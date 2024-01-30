@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RegistrationPgSharedPref extends StatefulWidget {
+  const RegistrationPgSharedPref({super.key});
+
   @override
   State<RegistrationPgSharedPref> createState() => _RegistrationPgSharedPref();
 }
@@ -17,7 +19,8 @@ class _RegistrationPgSharedPref extends State<RegistrationPgSharedPref> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(elevation: 5,
+      appBar: AppBar(
+        elevation: 5,
         title: const Text('Registration Page'),
       ),
       body: Form(
@@ -64,7 +67,7 @@ class _RegistrationPgSharedPref extends State<RegistrationPgSharedPref> {
                     onPressed: () {
                       var valid = formKey.currentState!.validate();
                       if (valid == true) {
-                        storeData();
+                        storeData();///storing data
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(content: Text('Invalid Inputs')));
@@ -87,7 +90,7 @@ class _RegistrationPgSharedPref extends State<RegistrationPgSharedPref> {
     preferences.setString('Pass', password);
 
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => LoginPgSharedPref()));
+        context, MaterialPageRoute(builder: (context) => const LoginPgSharedPref()));
 
     // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LoginPgSharedPref()));
   }

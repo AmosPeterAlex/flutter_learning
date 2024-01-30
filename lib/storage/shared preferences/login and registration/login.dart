@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPgSharedPref extends StatefulWidget {
+  const LoginPgSharedPref({super.key});
+
   @override
   State<LoginPgSharedPref> createState() => _LoginPgSharedPrefState();
 }
@@ -24,14 +26,15 @@ class _LoginPgSharedPrefState extends State<LoginPgSharedPref> {
 
   void checkIfUserAlreadyLogin() async {
     preferences = await SharedPreferences.getInstance();
-    // ?? if the given condition is null second statement will execute
-    // the ley new-user will create only when we click on login button.. before that it will be null
-    newUser = preferences.getBool('newUser') ?? true;
+
+    newUser = preferences.getBool('newUser') ?? true;//doubt
 
     if (newUser == false) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomeSharedPref()));
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const HomeSharedPref()));
     }
+    // ?? if the given condition is null second statement will execute
+    // the ley new-user will create only when we click on login button.. before that it will be null
   }
 
   @override
@@ -97,7 +100,7 @@ class _LoginPgSharedPrefState extends State<LoginPgSharedPref> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  RegistrationPgSharedPref()));
+                                  const RegistrationPgSharedPref()));
                     },
                     child: const Text('Not a User?\nRegister Here'))
               ],
@@ -111,7 +114,7 @@ class _LoginPgSharedPrefState extends State<LoginPgSharedPref> {
     String pass = passController.text;
     preferences = await SharedPreferences.getInstance();
 
-    //if a user is loggedIn then mark it as not anew user
+    //if a user is loggedIn then mark it as not a new user
     preferences.setBool('newUser', false);
 
     //reading the registered values
@@ -119,14 +122,14 @@ class _LoginPgSharedPrefState extends State<LoginPgSharedPref> {
     String? storedPass = preferences.getString('Pass');
 
     if (storedUname == uname && storedPass == pass) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomeSharedPref()));
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const HomeSharedPref()));
     }
   }
 }
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: LoginPgSharedPref(),
     debugShowCheckedModeBanner: false,
   ));

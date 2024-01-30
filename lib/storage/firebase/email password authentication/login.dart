@@ -1,5 +1,5 @@
-import 'package:advanced_flutter/storage/firebase/email%20password%20authentification/home.dart';
-import 'package:advanced_flutter/storage/firebase/email%20password%20authentification/registration.dart';
+import 'package:advanced_flutter/storage/firebase/email%20password%20authentication/home.dart';
+import 'package:advanced_flutter/storage/firebase/email%20password%20authentication/registration.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ class LoginFirebase extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login Here'),
+        title: const Text('Login Here'),
       ),
       body: Center(
         child: Column(
@@ -23,22 +23,22 @@ class LoginFirebase extends StatelessWidget {
           children: [
             TextField(
                 controller: emailController,
-                style: TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                     hintText: 'Email',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)))),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextField(
                 controller: passController,
-                style: TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                     hintText: 'Password',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)))),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             ElevatedButton(
@@ -52,7 +52,7 @@ class LoginFirebase extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HomeFirebase()));
+                              builder: (context) => const HomeFirebase()));
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           backgroundColor: Colors.redAccent,
@@ -60,8 +60,8 @@ class LoginFirebase extends StatelessWidget {
                     }
                   });
                 },
-                child: Text('Login Now')),
-            SizedBox(
+                child: const Text('Login Now')),
+            const SizedBox(
               height: 10,
             ),
             TextButton(
@@ -71,7 +71,7 @@ class LoginFirebase extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => RegistrationFirebase()));
                 },
-                child: Text('Dont have an account?\nRegister Now'))
+                child: const Text('Dont have an account?\nRegister Now'))
           ],
         ),
       ),
@@ -83,14 +83,14 @@ void main() async {
   WidgetsFlutterBinding
       .ensureInitialized(); //external storages add cheynm enkil edh il engaene initilaisation cheyanm
   await Firebase.initializeApp(
-      options: FirebaseOptions(
+      options: const FirebaseOptions(
           apiKey: "AIzaSyBh5jt-EJluy3aBIr4cw6jnLo4DJ7e9ozk",
           appId: "fir-flutter-ex-667d6",
           messagingSenderId: '',
           projectId: "fir-flutter-ex-667d6"));
   User? user = FirebaseAuth.instance.currentUser;
   runApp(MaterialApp(
-    home: user == null ? LoginFirebase() : HomeFirebase(),
+    home: user == null ? LoginFirebase() : const HomeFirebase(),
     debugShowCheckedModeBanner: false,
   ));
 }

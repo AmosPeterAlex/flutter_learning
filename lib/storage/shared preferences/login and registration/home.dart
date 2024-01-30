@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeSharedPref extends StatefulWidget {
-  // const HomeSharedPref({super.key});
+  const HomeSharedPref({super.key});
 
   @override
   State<HomeSharedPref> createState() => _HomeSharedPrefState();
@@ -13,7 +13,7 @@ class _HomeSharedPrefState extends State<HomeSharedPref> {
   late SharedPreferences preferences;
   String? uname;
 
-  // override advice vech remove aaki
+  // override was removed due to suggestion
 
   @override
   void initState() {
@@ -42,7 +42,7 @@ class _HomeSharedPrefState extends State<HomeSharedPref> {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => LoginPgSharedPref()));
+                        builder: (context) => const LoginPgSharedPref()));
                 // Navigator.of(context).push(MaterialPageRoute(
                 //     builder: (context) => LoginPgSharedPref()));
 

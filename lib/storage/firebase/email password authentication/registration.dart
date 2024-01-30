@@ -1,5 +1,5 @@
-import 'package:advanced_flutter/storage/firebase/email%20password%20authentification/firebase_functions.dart';
-import 'package:advanced_flutter/storage/firebase/email%20password%20authentification/login.dart';
+import 'package:advanced_flutter/storage/firebase/email%20password%20authentication/firebase_functions.dart';
+import 'package:advanced_flutter/storage/firebase/email%20password%20authentication/login.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationFirebase extends StatelessWidget {
@@ -13,7 +13,7 @@ class RegistrationFirebase extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register Now'),
+        title: const Text('Register Now'),
       ),
       body: Center(
         child: Column(
@@ -21,22 +21,22 @@ class RegistrationFirebase extends StatelessWidget {
           children: [
             TextField(
                 controller: emailController,
-                style: TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                     hintText: 'Email',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)))),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextField(
                 controller: passController,
-                style: TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                     hintText: 'Password',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)))),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             // TextField(
@@ -68,8 +68,8 @@ class RegistrationFirebase extends StatelessWidget {
                     }
                   });
                 },
-                child: Text('Register Now')),
-            SizedBox(
+                child: const Text('Register Now')),
+            const SizedBox(
               height: 10,
             ),
             TextButton(
@@ -77,7 +77,7 @@ class RegistrationFirebase extends StatelessWidget {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => LoginFirebase()));
                 },
-                child: Text('Already have an account?\nLogin Now'))
+                child: const Text('Already have an account?\nLogin Now'))
           ],
         ),
       ),

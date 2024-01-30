@@ -81,8 +81,8 @@ class LoginPageSQLite extends StatelessWidget {
                       } else {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(const SnackBar(
-                          content: Text('Error'),
                           backgroundColor: Colors.red,
+                          content: Text('Error'),
                         ));
                       }
                     },

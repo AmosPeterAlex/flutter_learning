@@ -12,7 +12,8 @@ class UserHome extends StatefulWidget {
 }
 
 class _UserHomeState extends State<UserHome> {
-  var name, email;  var emailCntrler = TextEditingController();
+  var name, email;
+  var emailCntrler = TextEditingController();
   var nameCntrler = TextEditingController();
 
   @override
@@ -21,8 +22,6 @@ class _UserHomeState extends State<UserHome> {
     email = widget.data[0]['email'];
     super.initState();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +43,7 @@ class _UserHomeState extends State<UserHome> {
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
+                  const Text(
                     'Edit Data',
                     style: TextStyle(fontSize: 15),
                   ),
@@ -54,7 +53,7 @@ class _UserHomeState extends State<UserHome> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10))),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   TextField(
@@ -75,7 +74,7 @@ class _UserHomeState extends State<UserHome> {
                         //   emailCntrler.text='';
                         // await SQLFunctions.updateDetailsByUser(nameCntrler,emailCntrler);
                       },
-                      child: Text("Edit Details"))
+                      child: const Text("Edit Details"))
                 ],
               ),
             );
@@ -95,11 +94,11 @@ class _UserHomeState extends State<UserHome> {
           ),
           Card(
             child: ListTile(
-              leading: Icon(Icons.person),
+              leading: const Icon(Icons.person),
               title: Text(
                 // widget.data[0]['name'],
                 '$name',
-                style: TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 20),
               ),
               subtitle: Text(
                 // widget.data[0]['email']
@@ -109,7 +108,7 @@ class _UserHomeState extends State<UserHome> {
                 onPressed: () {
                   editData();
                 },
-                icon: Icon(Icons.edit),
+                icon: const Icon(Icons.edit),
               ),
             ),
           ),

@@ -17,6 +17,11 @@ class RegistrationPageSQLite extends StatelessWidget {
   var nameController = TextEditingController();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
+  //doubt
+  // final formKey = GlobalKey<FormState>();
+  // final nameController = TextEditingController();
+  // final emailController = TextEditingController();
+  // final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +29,7 @@ class RegistrationPageSQLite extends StatelessWidget {
       var id = await SQLFunctions.addUser(
           name, email, password); //id that return when we add new users
       // if (kDebugMode) {
-        print(id);
+      print(id);
       // }
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => LoginPageSQLite()));
