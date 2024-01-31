@@ -1,7 +1,6 @@
 import 'dart:async';
-
-// import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart' as sql; //y typed as this
+import 'package:sqflite/sqflite.dart' as sql;
+//sqflite use cheyanda eduth oke ini sql en use cheydhal madhy
 
 class SQLFunctions {
   //create database
@@ -53,7 +52,7 @@ class SQLFunctions {
 
 //to check if user has already registered
   static Future<List<Map>> checkUserAlreadyRegistered(String email) async {
-    var db = await SQLFunctions.openOrCreateDb(); // to open database
+    var db = await SQLFunctions.openOrCreateDb();
     final user =
         await db.rawQuery("SELECT * FROM userdata WHERE email ='$email'");
     if (user.isNotEmpty) {
@@ -62,13 +61,25 @@ class SQLFunctions {
       return user;
     }
   }
+//or
+  /*from chatGpt
+  static Future<bool> checkUserAlreadyRegistered(String email) async {
+    var db = await SQLFunctions.openOrCreateDb();
 
+    // Using parameterized query to avoid SQL injection
+    final user = await db.rawQuery("SELECT * FROM userdata WHERE email = ?", [email]);
+
+    // Returning true if the user is found, false otherwise
+    return user.isNotEmpty;
+  }
+*/
   //to read all the users from database(db)
   static Future<List<Map<String, dynamic>>> getAllUsersFromDB() async {
     var db = await SQLFunctions.openOrCreateDb();
     final allUsers = await db.rawQuery("SELECT * FROM userdata");
     return allUsers;
   }
+
 
 // to delete all users from database
   static Future<void> deleteDataFromDB(int id) async {

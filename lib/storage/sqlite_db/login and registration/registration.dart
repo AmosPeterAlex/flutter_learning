@@ -1,6 +1,5 @@
 import 'package:advanced_flutter/storage/sqlite_db/login%20and%20registration/login.dart';
 import 'package:advanced_flutter/storage/sqlite_db/login%20and%20registration/sqlite_functions.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {

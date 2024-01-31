@@ -6,15 +6,15 @@ import 'package:flutter/material.dart';
 
 class LoginPageSQLite extends StatelessWidget {
   // const LoginPageSQLite({super.key});
-  var formKey = GlobalKey<FormState>();
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     void loginUser(String email, String password) async {
       //admin login
-      if (email == 'admin@1' && password == 'admin123') {
+      if (email == 'admin@1' && password == '123456') {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => AdminHome()));
       } else {
