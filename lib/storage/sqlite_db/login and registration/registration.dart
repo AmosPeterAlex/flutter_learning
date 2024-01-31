@@ -11,17 +11,17 @@ void main() {
 }
 
 class RegistrationPageSQLite extends StatelessWidget {
-  // const RegistrationPageSQLite({super.key});
+   // RegistrationPageSQLite({super.key});
 
-  var formKey = GlobalKey<FormState>();
-  var nameController = TextEditingController();
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
+  // var formKey = GlobalKey<FormState>();
+  // var nameController = TextEditingController();
+  // var emailController = TextEditingController();
+  // var passwordController = TextEditingController();
   //doubt
-  // final formKey = GlobalKey<FormState>();
-  // final nameController = TextEditingController();
-  // final emailController = TextEditingController();
-  // final passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +98,7 @@ class RegistrationPageSQLite extends StatelessWidget {
                             await SQLFunctions.checkUserAlreadyRegistered(
                                 emailController.text);
                         if (users.isNotEmpty) {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                               backgroundColor: Colors.red,
                               content: Text("User Already Registered")));
                         } else {
