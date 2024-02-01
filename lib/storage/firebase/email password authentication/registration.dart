@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 class RegistrationFirebase extends StatelessWidget {
   // const RegistrationFirebase({super.key});
-  var emailController = TextEditingController();
-  var passController = TextEditingController();
+  final emailController = TextEditingController();
+  final passController = TextEditingController();
 
   // var cPassController = TextEditingController();
 
@@ -55,7 +55,7 @@ class RegistrationFirebase extends StatelessWidget {
                   String pass = passController.text.trim();
                   FirebaseHelper()
                       .registerUser(email: email, pass: pass)
-                      .then((value) {
+                      .then((value) {//then callback is used to handle the result of the registration
                     if (value == null) {
                       Navigator.push(
                           context,

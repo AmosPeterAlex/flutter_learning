@@ -8,8 +8,8 @@ import 'firebase_functions.dart';
 
 class LoginFirebase extends StatelessWidget {
   // const LoginFirebase({super.key});
-  var emailController = TextEditingController();
-  var passController = TextEditingController();
+  final emailController = TextEditingController();
+  final passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +45,10 @@ class LoginFirebase extends StatelessWidget {
                 onPressed: () {
                   String email = emailController.text.trim();
                   String pass = passController.text.trim();
+
+                  ///.trim() => The string without any leading and trailing whitespace.
+                  ///If the string contains leading or trailing whitespace,
+                  ///a new string with no leading and no trailing whitespace is returned:
                   FirebaseHelper()
                       .loginUser(email: email, pass: pass)
                       .then((value) {
@@ -71,7 +75,7 @@ class LoginFirebase extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => RegistrationFirebase()));
                 },
-                child: const Text('Dont have an account?\nRegister Now'))
+                child: const Text('Do not have an account?\nRegister Now'))
           ],
         ),
       ),
@@ -80,17 +84,30 @@ class LoginFirebase extends StatelessWidget {
 }
 
 void main() async {
-  WidgetsFlutterBinding
-      .ensureInitialized(); //external storages add cheynm enkil edh il engaene initilaisation cheyanm
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
+      //Initializes Firebase with the provided configuration options. This step is necessary before using any Firebase services.
       options: const FirebaseOptions(
           apiKey: "AIzaSyBh5jt-EJluy3aBIr4cw6jnLo4DJ7e9ozk",
           appId: "fir-flutter-ex-667d6",
           messagingSenderId: '',
           projectId: "fir-flutter-ex-667d6"));
   User? user = FirebaseAuth.instance.currentUser;
+  //Retrieves the current authenticated user using the currentUser property of the FirebaseAuth instance.
   runApp(MaterialApp(
     home: user == null ? LoginFirebase() : const HomeFirebase(),
     debugShowCheckedModeBanner: false,
   ));
 }
+/*
+WidgetsFlutterBinding is a class in the Flutter framework responsible
+for initializing and binding the Flutter framework to the platform.
+It is part of the widget framework and plays a crucial role in managing
+the interaction between the Flutter code and the underlying platform.
+
+ensureInitialized() is a method provided by the WidgetsFlutterBinding class.
+It ensures that the Flutter framework is properly initialized and bound to the
+platform.This method is often called at the beginning of a Flutter app,
+especially if there are operations or plugins that depend on the
+Flutter framework being fully initialized.
+ */

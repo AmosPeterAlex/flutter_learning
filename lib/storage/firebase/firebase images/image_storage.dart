@@ -57,8 +57,9 @@ class _FirebaseImageStorageState extends State<FirebaseImageStorage> {
             ),
           ),
           // Expanded(child: StreamBuilder(stream: loadMedia(), builder: builder))
+          //Change this to streamBuilder  then wrap with something
           Expanded(
-              child: FutureBuilder(//edh change akki streambuilder aki, endo wrap cheydh nokan parnj
+              child: FutureBuilder(
                   future: loadMedia(),
                   //images returned from method
                   builder: (context, snapshot) {
@@ -112,6 +113,40 @@ class _FirebaseImageStorageState extends State<FirebaseImageStorage> {
       print(error);
     }
   }
+  /*
+  Future<void> upload(String imageFrom) async {
+  final picker = ImagePicker();
+  XFile? pickedImage; // Used for cross-platform
+
+  try {
+    // Pick an image from the camera or gallery based on 'imageFrom'
+    pickedImage = await picker.pickImage(
+        source: imageFrom == "camera" ? ImageSource.camera : ImageSource.gallery);
+
+    // Get the file name and create a File object from the picked image
+    final String fileName = path.basename(pickedImage!.path);
+    File imageFile = File(pickedImage.path);
+
+    try {
+      // Upload the image to Firebase Storage with custom metadata
+      await storage.ref(fileName).putFile(
+        imageFile,
+        SettableMetadata(customMetadata: {
+          "uploadedBy": "phoneName",
+          'time': '${DateTime.now()}',
+        }),
+      );
+    } on FirebaseException catch (error) {
+      // Handle Firebase storage exceptions
+      print(error);
+    }
+  } catch (error) {
+    // Handle other exceptions, e.g., if the user cancels image picking
+    print(error);
+  }
+}
+
+   */
 
   ///load images from firebase
   Future<List<Map<String, dynamic>>> loadMedia() async {
@@ -131,9 +166,36 @@ class _FirebaseImageStorageState extends State<FirebaseImageStorage> {
     }); //12.07
     // setState(() {});
     return images;
-
   }
+/*
+  Future<List<Map<String, dynamic>>> loadMedia() async {
+  List<Map<String, dynamic>> images = [];
 
+  // Retrieve a list of all files in the root directory of Firebase Storage
+  final ListResult result = await storage.ref().list();
+  final List<Reference> allFiles = result.items;
+
+  // Iterate through each file and gather information
+  await Future.forEach(allFiles, (singleFile) async {
+    // Get the download URL of the file
+    final String fileUrl = await singleFile.getDownloadURL();
+
+    // Get the metadata of the file
+    final FullMetadata metadata = await singleFile.getMetadata();
+
+    // Add information about the file to the 'images' list
+    images.add({
+      'imageUrl': fileUrl,
+      'path': singleFile.fullPath,
+      'uploadedBy': metadata.customMetadata?['uploadedBy'] ?? "no Data",
+      'time': metadata.customMetadata?['time'] ?? "NO Time Found",
+    });
+  });
+
+  return images;
+}
+
+ */
   ///delete from firebase
   Future<void> deleteMedia(String imagePath) async {
     await storage.ref(imagePath).delete();

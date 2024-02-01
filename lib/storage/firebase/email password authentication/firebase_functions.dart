@@ -3,18 +3,23 @@ import 'package:firebase_auth/firebase_auth.dart';
 class FirebaseHelper {
   final FirebaseAuth auth = FirebaseAuth.instance;
 
-  get user => auth.currentUser;
+  get user => auth
+      .currentUser; //This getter named user retrieves the current user from the auth instance using auth.currentUser.
 
-///user SignUp
+  ///user SignUp
   Future<String?> registerUser(
-      {required String email, required String pass}) async {
+      // Attempt to create a user with the provided email and password
+      {required String email,
+      required String pass}) async {
     try {
       await auth.createUserWithEmailAndPassword(
         email: email,
         password: pass,
       );
-      // return null;
+      // If successful, return null (no error)
+      return null;
     } on FirebaseAuthException catch (e) {
+      // If there is a FirebaseAuthException, return the error message
       return e.message;
     } catch (e) {
       print(e);
@@ -39,9 +44,9 @@ class FirebaseHelper {
     }
   }
 
-///signOut
+  ///signOut
 
-Future<void> logOut() async{
-  await auth.signOut();
-}
+  Future<void> logOut() async {
+    await auth.signOut();
+  }
 }

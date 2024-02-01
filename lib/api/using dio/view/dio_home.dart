@@ -62,6 +62,8 @@ class HomeDio extends StatelessWidget {
               ),
               title: Text("${controller.dataS[index].title}"),
               subtitle: Text('${controller.dataS[index].body}'),
+              trailing: Text(
+                  controller.dataS[index].userId.toString()), //was added by me
             ),
           ),
         ),
