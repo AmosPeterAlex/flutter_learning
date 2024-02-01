@@ -4,6 +4,7 @@ import 'package:advanced_flutter/api/using%20dio/utils%20or%20constants/dio_top_
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class HomeDio extends StatelessWidget {
@@ -79,8 +80,8 @@ class HomeDio extends StatelessWidget {
           const Text("No Internet"),
           MaterialButton(
             color: MyColors.scColor,
-            onPressed: () {
-              if (controller.isNetConnected.value) {
+            onPressed: () async {
+              if (await InternetConnectionChecker().hasConnection == true) {
                 controller.fetchData();
               } else {
                 showCustomSnackBar(context);

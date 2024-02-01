@@ -28,6 +28,7 @@ class DataController extends GetxController {
     var response = await DioService().getData(url);
     if (response.statusCode == 200) {
       response.data.forEach((data) {
+        DataModel.fromJson(data);
         dataS.add(DataModel.fromJson(data));
       });
 
