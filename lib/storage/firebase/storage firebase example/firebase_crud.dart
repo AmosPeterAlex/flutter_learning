@@ -64,6 +64,7 @@ class _FirebaseCRUDExState extends State<FirebaseCRUDEx> {
                 stream: getUser(),
 
                 ///data should be received from cloud
+                ///could be any type of data from firebase
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     return Text('Error ${snapshot.error}');

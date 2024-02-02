@@ -113,6 +113,7 @@ class _FirebaseImageStorageState extends State<FirebaseImageStorage> {
       print(error);
     }
   }
+
   /*
   Future<void> upload(String imageFrom) async {
   final picker = ImagePicker();
@@ -167,6 +168,7 @@ class _FirebaseImageStorageState extends State<FirebaseImageStorage> {
     // setState(() {});
     return images;
   }
+
 /*
   Future<List<Map<String, dynamic>>> loadMedia() async {
   List<Map<String, dynamic>> images = [];
@@ -196,6 +198,7 @@ class _FirebaseImageStorageState extends State<FirebaseImageStorage> {
 }
 
  */
+
   ///delete from firebase
   Future<void> deleteMedia(String imagePath) async {
     await storage.ref(imagePath).delete();
