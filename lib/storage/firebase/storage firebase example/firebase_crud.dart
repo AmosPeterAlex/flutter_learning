@@ -49,9 +49,12 @@ class _FirebaseCRUDExState extends State<FirebaseCRUDEx> {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10))),
             ),
+            SizedBox(height: 10,),
             ElevatedButton(
                 onPressed: () {
                   addUser();
+
+                  ///User should be added
                 },
                 child: const Text('Add User')),
             const SizedBox(
@@ -59,6 +62,8 @@ class _FirebaseCRUDExState extends State<FirebaseCRUDEx> {
             ),
             StreamBuilder<QuerySnapshot>(
                 stream: getUser(),
+
+                ///data should be received from cloud
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     return Text('Error ${snapshot.error}');
@@ -135,6 +140,9 @@ class _FirebaseCRUDExState extends State<FirebaseCRUDEx> {
                     controller: nameEController,
                     decoration: const InputDecoration(
                         hintText: "Enter Text", border: OutlineInputBorder())),
+                SizedBox(
+                  height: 5,
+                ),
                 TextField(
                     controller: emailEController,
                     decoration: const InputDecoration(
