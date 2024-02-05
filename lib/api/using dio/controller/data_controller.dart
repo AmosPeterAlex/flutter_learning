@@ -27,10 +27,14 @@ class DataController extends GetxController {
     isLoading.value = true;
     var response = await DioService().getData(url);
     if (response.statusCode == 200) {
-      response.data.forEach((data) {
-        // DataModel.fromJson(data); //was added later by other
-        dataS.add(DataModel.fromJson(data));
-      });
+      response.data.forEach(
+        (data) {
+          // DataModel.fromJson(data); //was added later by other
+          dataS.add(
+            DataModel.fromJson(data),
+          );
+        },
+      );
       isLoading.value = false;
     }
   }

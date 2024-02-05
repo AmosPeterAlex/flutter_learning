@@ -8,7 +8,8 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class HomeDio extends StatelessWidget {
-  // HomeDio({super.key});
+  HomeDio({super.key});
+
   final DataController controller =
       Get.put(DataController()); //initialize the controller
 
@@ -21,15 +22,21 @@ class HomeDio extends StatelessWidget {
       ),
       backgroundColor: MyColors.bgColor,
       floatingActionButton: Obx(
-          () => controller.isNetConnected.value ? _buildFAB() : Container()),
-      body: Obx(() => SizedBox(
+        () => controller.isNetConnected.value ? _buildFAB() : Container(),
+      ),
+      body: Obx(
+        () => SizedBox(
           height: double.infinity,
           width: double.infinity,
           child: controller.isNetConnected.value
               ? (controller.isLoading.value
-                  ? const Center(child: CircularProgressIndicator())
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
                   : getData())
-              : noInternet(context))),
+              : noInternet(context),
+        ),
+      ),
     );
   }
 
@@ -58,12 +65,15 @@ class HomeDio extends StatelessWidget {
             child: ListTile(
               leading: CircleAvatar(
                 backgroundColor: MyColors.scColor,
-                child: Text(controller.dataS[index].id.toString()),
+                child: Text(
+                  controller.dataS[index].id.toString(),
+                ),
               ),
               title: Text("${controller.dataS[index].title}"),
               subtitle: Text('${controller.dataS[index].body}'),
               trailing: Text(
-                  controller.dataS[index].userId.toString()), //was added by me
+                controller.dataS[index].userId.toString(),
+              ), //was added by me
             ),
           ),
         ),

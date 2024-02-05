@@ -6,20 +6,20 @@ void main() {
   runApp(MaterialApp(
     home: ChangeNotifierProvider(
       create: (context) => CounterProvider(),
-      child: CounterProviderExample(),
+      child: const CounterProviderExample(),
     ),
   ));
 }
 
 class CounterProviderExample extends StatelessWidget {
-  // const CounterProviderExample({super.key});
+  const CounterProviderExample({super.key});
 
   @override
   Widget build(BuildContext context) {
     var counterController = Provider.of<CounterProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Counter Provider Example'),
+        title: const Text('Counter Provider Example'),
       ),
       body: Center(
         child: Column(
@@ -33,7 +33,12 @@ class CounterProviderExample extends StatelessWidget {
                 onPressed: () {
                   counterController.incrementCount();
                 },
-                child: Text('Increment Value'))
+                child: const Text('Increment Value')),
+            ElevatedButton(
+                onPressed: () {
+                  counterController.decrementCount();
+                },
+                child: const Text('Decrement Value'))
           ],
         ),
       ),

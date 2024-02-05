@@ -10,9 +10,9 @@ void main() {
 }
 
 class DataPassingMain extends StatelessWidget {
-  DataPassingMain({super.key});
+  // DataPassingMain({super.key});
 
-  String name = "Amos Peter";
+ final String name = "Amos Peter";
 
   @override
   Widget build(BuildContext context) {

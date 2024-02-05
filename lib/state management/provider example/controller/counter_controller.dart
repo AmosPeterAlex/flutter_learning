@@ -2,12 +2,16 @@ import 'package:advanced_flutter/state%20management/provider%20example/model/cou
 import 'package:flutter/material.dart';
 
 class CounterProvider extends ChangeNotifier {
-  Count _incrementCounter = Count(0);
+  final Count _changeCounter = Count(0);
 
-  Count get counterValue => _incrementCounter;
+  Count get counterValue => _changeCounter;
 
   void incrementCount() {
-    _incrementCounter.value++;
+    _changeCounter.value++;
+    notifyListeners();
+  }
+  void decrementCount(){
+    _changeCounter.value--;
     notifyListeners();
   }
 }

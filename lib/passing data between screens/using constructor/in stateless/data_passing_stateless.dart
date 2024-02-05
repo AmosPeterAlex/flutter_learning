@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StatelessDataPassing extends StatelessWidget {
-  String name;
+  final String name;
 
   StatelessDataPassing({super.key, required this.name});
 

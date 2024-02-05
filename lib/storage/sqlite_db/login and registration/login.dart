@@ -16,7 +16,7 @@ class LoginPageSQLite extends StatelessWidget {
       //admin login
       if (email == 'admin@1' && password == '123456') {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => AdminHome()));
+            context, MaterialPageRoute(builder: (context) => const AdminHome()));
       } else {
         //Check if user exist in database db
         var data = await SQLFunctions.checkUserExist(email, password);

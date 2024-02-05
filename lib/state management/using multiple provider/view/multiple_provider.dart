@@ -3,7 +3,20 @@ import 'package:advanced_flutter/state%20management/using%20multiple%20provider/
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+void main() {
+  runApp(MaterialApp(
+    home: MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context) => CountProvider()),
+      ChangeNotifierProvider(
+        create: (context) => AuthProvider(),
+      )
+    ], child: const MultiProviderExample()),
+  ));
+}
+
 class MultiProviderExample extends StatelessWidget {
+  const MultiProviderExample({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,11 +24,11 @@ class MultiProviderExample extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Counter Value',
               style: TextStyle(fontSize: 20),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             ElevatedButton(
@@ -23,31 +36,33 @@ class MultiProviderExample extends StatelessWidget {
                   Provider.of<CountProvider>(context, listen: false)
                       .increment();
                 },
-                child: Text('Increment Counter')),
-            SizedBox(
+                child: const Text('Increment Counter')),
+            const SizedBox(
               height: 10,
             ),
             Text(
               'Count value :${Provider.of<CountProvider>(context).count}',
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Text(
+            const Text(
               'Auth Details',
               style: TextStyle(fontSize: 20),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             ElevatedButton(
                 onPressed: () {
                   Provider.of<AuthProvider>(context, listen: false).login
-                      ? Provider.of<AuthProvider>(context,listen: false).loggedOut()
-                      : Provider.of<AuthProvider>(context,listen: false).loggedIn();
+                      ? Provider.of<AuthProvider>(context, listen: false)
+                          .loggedOut()
+                      : Provider.of<AuthProvider>(context, listen: false)
+                          .loggedIn();
                 },
-                child: Text('Switch Login')),
+                child: const Text('Switch Login')),
             Consumer<AuthProvider>(
               builder: (context, authProvider, child) {
                 return Text(
@@ -59,15 +74,4 @@ class MultiProviderExample extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: MultiProvider(providers: [
-      ChangeNotifierProvider(create: (context) => CountProvider()),
-      ChangeNotifierProvider(
-        create: (context) => AuthProvider(),
-      )
-    ], child: MultiProviderExample()),
-  ));
 }

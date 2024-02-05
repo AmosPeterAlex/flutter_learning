@@ -4,10 +4,12 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
-      create: (context) => ThemeProvider(), child: MyAppOne()));
+      create: (context) => ThemeProvider(), child: const MyAppOne()));
 }
 
 class MyAppOne extends StatelessWidget {
+  const MyAppOne({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,7 +17,7 @@ class MyAppOne extends StatelessWidget {
           ? ThemeData.dark()
           : ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      home: AppThemeChangeExample(),
+      home: const AppThemeChangeExample(),
     );
   }
 }
@@ -31,7 +33,7 @@ class AppThemeChangeExample extends StatelessWidget {
             onPressed: () {
               Provider.of<ThemeProvider>(context, listen: false).switchTheme();
             },
-            child: Text('Switch Theme')),
+            child: const Text('Switch Theme')),
       ),
     );
   }

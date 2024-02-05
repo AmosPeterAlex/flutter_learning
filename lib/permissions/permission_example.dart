@@ -4,17 +4,19 @@ import 'package:path/path.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: PermissionEx(),
   ));
 }
 
 class PermissionEx extends StatelessWidget {
+  const PermissionEx({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Permission Example'),
+        title: const Text('Permission Example'),
       ),
       body: Center(
         child: Column(
@@ -24,17 +26,17 @@ class PermissionEx extends StatelessWidget {
                 onPressed: () {
                   askCameraPermission(context);
                 },
-                child: Text('CAmera')),
+                child: const Text('Camera')),
             ElevatedButton(
                 onPressed: () {
                   askMultiplePermissions();
                 },
-                child: Text('Multiple Permissions')),
+                child: const Text('Multiple Permissions')),
             ElevatedButton(
                 onPressed: () {
                   openSettings();
                 },
-                child: Text('Settings')),
+                child: const Text('Settings')),
           ],
         ),
       ),
@@ -48,7 +50,7 @@ class PermissionEx extends StatelessWidget {
       picker.pickImage(source: ImageSource.camera);
     } else if (status.isDenied) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Permission Denied")));
+          .showSnackBar(const SnackBar(content: Text("Permission Denied")));
     }
   }
 

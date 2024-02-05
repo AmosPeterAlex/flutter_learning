@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class StatefulDataPassing extends StatefulWidget {
-  String name;
-  String? place;
+  final String name;
+  final String? place;
 
   StatefulDataPassing({super.key, required this.name, this.place});
 
