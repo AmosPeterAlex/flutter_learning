@@ -1,6 +1,7 @@
 import 'package:advanced_flutter/storage/firebase/email%20password%20authentication/firebase_functions.dart';
 import 'package:advanced_flutter/storage/firebase/email%20password%20authentication/login.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class RegistrationFirebase extends StatelessWidget {
   // const RegistrationFirebase({super.key});
@@ -39,23 +40,14 @@ class RegistrationFirebase extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            // TextField(
-            //     controller: cPassController,
-            //     style: TextStyle(fontSize: 20),
-            //     decoration: InputDecoration(
-            //         hintText: 'Confirm Password',
-            //         border: OutlineInputBorder(
-            //             borderRadius: BorderRadius.circular(10)))),
-            // SizedBox(
-            //   height: 10,
-            // ),
             ElevatedButton(
                 onPressed: () {
                   String email = emailController.text.trim();
                   String pass = passController.text.trim();
                   FirebaseHelper()
                       .registerUser(email: email, pass: pass)
-                      .then((value) {//then callback is used to handle the result of the registration
+                      .then((value) {
+                    //then callback is used to handle the result of the registration
                     if (value == null) {
                       Navigator.push(
                           context,
