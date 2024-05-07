@@ -13,6 +13,7 @@ class DioMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       home: HomeDio(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
