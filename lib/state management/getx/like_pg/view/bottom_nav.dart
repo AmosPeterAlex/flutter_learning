@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(ViewPage());
+  runApp(BottomNavPage());
 }
 
-class ViewPage extends StatefulWidget {
-  const ViewPage({super.key});
+class BottomNavPage extends StatefulWidget {
+  const BottomNavPage({super.key});
 
   @override
-  State<ViewPage> createState() => _ViewPageState();
+  State<BottomNavPage> createState() => _BottomNavPageState();
 }
 
-class _ViewPageState extends State<ViewPage> {
+class _BottomNavPageState extends State<BottomNavPage> {
   int currentIndex = 0;
 
   @override
@@ -58,9 +58,9 @@ class HomePage extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("one"),
-                  Text("one"),
-                  Text("one"),
+                  Text("1"),
+                  Text("2"),
+                  Text("3"),
                 ],
               ),
               IconButton(
