@@ -12,9 +12,19 @@ class SharePdfScreen extends StatelessWidget {
         title: Text('Share PDF'),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () => _sharePdf(context),
-          child: Text('Share PDF'),
+        child: Column(
+          children: [
+            InkWell(
+              onLongPress: () => _sharePdf(context),
+              onTap: () {
+                //pdf open akan ola command idenm
+              },
+            ),
+            // ElevatedButton(
+            //   onPressed: () => _sharePdf(context),
+            //   child: Text('Share PDF'),
+            // ),
+          ],
         ),
       ),
     );
